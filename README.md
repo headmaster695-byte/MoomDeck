@@ -19,6 +19,59 @@ MoomDeck is a pseudo-OS for **CC:Tweaked** on **Minecraft 1.21.1 NeoForge**. It 
 
 ## Installation
 
+### Quick install with `wget` (recommended)
+
+On a CC:Tweaked computer, run:
+
+```lua
+wget run https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/install.lua
+```
+
+This downloads every file into the correct folders, then reboot the computer to start MoomDeck.
+
+**Requirements:** `wget` must be enabled in your CC:Tweaked config (`http_enabled` / `https_enabled`). On a multiplayer server, an admin may need to allow `*.githubusercontent.com`.
+
+### Manual install with `wget`
+
+If you prefer to download files yourself, create the folders first:
+
+```lua
+fs.makeDir("moomdeck")
+fs.makeDir("moomdeck/core")
+fs.makeDir("moomdeck/services")
+fs.makeDir("moomdeck/adapters")
+fs.makeDir("moomdeck/ui")
+fs.makeDir("moomdeck/ui/apps")
+fs.makeDir("examples")
+```
+
+Then download the startup script:
+
+```lua
+wget https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/startup.lua startup.lua
+```
+
+And run the installer locally (if you already downloaded it):
+
+```lua
+wget https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/install.lua install.lua
+install.lua
+```
+
+Or download individual files. Example:
+
+```lua
+wget https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/moomdeck/boot.lua moomdeck/boot.lua
+```
+
+All file URLs follow this pattern:
+
+```
+https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/<path>
+```
+
+### Manual copy
+
 1. Copy the entire repository onto a CC:Tweaked computer:
    - `startup.lua` (computer root)
    - `moomdeck/` (folder)
@@ -117,6 +170,7 @@ Generic CC:Tweaked peripheral types work without addon mods. Addon-specific adap
 
 ```
 startup.lua
+install.lua
 moomdeck/
   boot.lua
   config.lua
