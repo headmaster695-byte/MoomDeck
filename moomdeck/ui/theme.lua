@@ -1,0 +1,20 @@
+return {
+    bg = colors.black,
+    panel = colors.gray,
+    panel_alt = colors.lightGray,
+    accent = colors.cyan,
+    accent_alt = colors.blue,
+    text = colors.white,
+    text_dim = colors.lightGray,
+    text_dark = colors.black,
+    danger = colors.red,
+    warning = colors.orange,
+    success = colors.lime,
+    title = colors.yellow,
+    category = {
+        item = colors.lime,
+        fluid = colors.lightBlue,
+        energy = colors.yellow,
+        stress = colors.magenta,
+    },
+}
