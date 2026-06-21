@@ -32,7 +32,7 @@ This downloads every file into the correct folders, then reboot the computer to 
 
 **Default secure boot password:** `ILoveMumei`
 
-**Requirements:** `wget` must be enabled in your CC:Tweaked config (`http_enabled` / `https_enabled`). On a multiplayer server, an admin may need to allow `*.githubusercontent.com`.
+**Requirements:** The HTTP API must be enabled in CC:Tweaked (`http_enabled` / `https_enabled`). The `wget run` command only fetches the installer; the installer itself uses `http.get` to download the rest of the files. On a multiplayer server, an admin may need to allow `*.githubusercontent.com`.
 
 ### Manual install with `wget`
 

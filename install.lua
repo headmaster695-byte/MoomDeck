@@ -38,9 +38,38 @@ local function ensure_dir(path)
     end
 end
 
+local function download(url, path)
+    if not http or not http.get then
+        return false, "HTTP API is not available"
+    end
+
+    local response = http.get(url)
+    if not response then
+        return false, "request failed"
+    end
+
+    local content = response.readAll()
+    response.close()
+
+    local handle = fs.open(path, "w")
+    if not handle then
+        return false, "could not write file"
+    end
+
+    handle.write(content)
+    handle.close()
+    return true
+end
+
 print("MoomDeck installer")
 print("Downloading from " .. BASE)
 print("")
+
+if not http or not http.get then
+    print("ERROR: HTTP is not enabled on this computer.")
+    print("Ask your server admin to enable http_enabled in CC:Tweaked config.")
+    return
+end
 
 local ok_count = 0
 local fail_count = 0
@@ -58,12 +87,12 @@ for _, path in ipairs(files) do
     local url = BASE .. path
     term.write("Fetching " .. path .. " ... ")
 
-    local ok = wget(url, path)
+    local ok, err = download(url, path)
     if ok then
         print("OK")
         ok_count = ok_count + 1
     else
-        print("FAILED")
+        print("FAILED (" .. tostring(err) .. ")")
         fail_count = fail_count + 1
     end
 end
