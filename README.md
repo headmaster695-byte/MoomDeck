@@ -16,6 +16,7 @@ MoomDeck is a pseudo-OS for **CC:Tweaked** on **Minecraft 1.21.1 NeoForge**. It 
 - **Inflow lock** to pin production rate when outflow would skew net sampling
 - **Organize app** to assign streams → machines → factories
 - **Remote push API** via Rednet for custom peripheral scripts
+- **Secure boot** password gate before the desktop loads
 
 ## Installation
 
