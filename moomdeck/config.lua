@@ -1,6 +1,7 @@
 return {
     version = "1.0.0",
     title = "MoomDeck",
+    secure_boot_enabled = true,
     data_file = "moomdeck/data.json",
     poll_interval = 0.5,
     sample_window = 120,

@@ -2,6 +2,7 @@ local config = require("config")
 local storage = require("core/storage")
 local events = require("core/events")
 local scheduler = require("core/scheduler")
+local secure_boot = require("core/secure_boot")
 local display = require("ui/display")
 local desktop = require("ui/desktop")
 local peripheral_manager = require("services/peripheral_manager")
@@ -25,6 +26,8 @@ function MoomDeck.start()
     running = true
 
     math.randomseed(os.epoch("utc"))
+
+    secure_boot.authenticate(term)
 
     storage.set_path(config.data_file)
     storage.load()

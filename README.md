@@ -16,8 +16,64 @@ MoomDeck is a pseudo-OS for **CC:Tweaked** on **Minecraft 1.21.1 NeoForge**. It 
 - **Inflow lock** to pin production rate when outflow would skew net sampling
 - **Organize app** to assign streams → machines → factories
 - **Remote push API** via Rednet for custom peripheral scripts
+- **Secure boot** password gate before the desktop loads
 
 ## Installation
+
+### Quick install with `wget` (recommended)
+
+On a CC:Tweaked computer, run:
+
+```lua
+wget run https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/install.lua
+```
+
+This downloads every file into the correct folders, then reboot the computer to start MoomDeck.
+
+**Default secure boot password:** `ILoveMumei`
+
+**Requirements:** `wget` must be enabled in your CC:Tweaked config (`http_enabled` / `https_enabled`). On a multiplayer server, an admin may need to allow `*.githubusercontent.com`.
+
+### Manual install with `wget`
+
+If you prefer to download files yourself, create the folders first:
+
+```lua
+fs.makeDir("moomdeck")
+fs.makeDir("moomdeck/core")
+fs.makeDir("moomdeck/services")
+fs.makeDir("moomdeck/adapters")
+fs.makeDir("moomdeck/ui")
+fs.makeDir("moomdeck/ui/apps")
+fs.makeDir("examples")
+```
+
+Then download the startup script:
+
+```lua
+wget https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/startup.lua startup.lua
+```
+
+And run the installer locally (if you already downloaded it):
+
+```lua
+wget https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/install.lua install.lua
+install.lua
+```
+
+Or download individual files. Example:
+
+```lua
+wget https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/moomdeck/boot.lua moomdeck/boot.lua
+```
+
+All file URLs follow this pattern:
+
+```
+https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/<path>
+```
+
+### Manual copy
 
 1. Copy the entire repository onto a CC:Tweaked computer:
    - `startup.lua` (computer root)
@@ -26,6 +82,18 @@ MoomDeck is a pseudo-OS for **CC:Tweaked** on **Minecraft 1.21.1 NeoForge**. It 
 3. Reboot the computer (or run `startup.lua`).
 
 For the best experience, attach a **monitor** to the computer. MoomDeck auto-detects it and expands the UI.
+
+## Secure Boot
+
+MoomDeck requires a password before the desktop loads. On boot you will see a **Secure Boot** screen on the computer terminal.
+
+| Setting | Default |
+|---------|---------|
+| Password | `ILoveMumei` |
+| Max attempts | 5 |
+| Lockout | 30 seconds after too many failures |
+
+To disable secure boot (single-player/testing only), set `secure_boot_enabled = false` in `moomdeck/config.lua`.
 
 ## Recommended Setup (Cobblestone Generator Example)
 
@@ -117,6 +185,7 @@ Generic CC:Tweaked peripheral types work without addon mods. Addon-specific adap
 
 ```
 startup.lua
+install.lua
 moomdeck/
   boot.lua
   config.lua
