@@ -29,6 +29,8 @@ wget run https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/inst
 
 This downloads every file into the correct folders, then reboot the computer to start MoomDeck.
 
+**Default secure boot password:** `ILoveMumei`
+
 **Requirements:** `wget` must be enabled in your CC:Tweaked config (`http_enabled` / `https_enabled`). On a multiplayer server, an admin may need to allow `*.githubusercontent.com`.
 
 ### Manual install with `wget`
@@ -79,6 +81,18 @@ https://raw.githubusercontent.com/headmaster695-byte/MoomDeck/main/<path>
 3. Reboot the computer (or run `startup.lua`).
 
 For the best experience, attach a **monitor** to the computer. MoomDeck auto-detects it and expands the UI.
+
+## Secure Boot
+
+MoomDeck requires a password before the desktop loads. On boot you will see a **Secure Boot** screen on the computer terminal.
+
+| Setting | Default |
+|---------|---------|
+| Password | `ILoveMumei` |
+| Max attempts | 5 |
+| Lockout | 30 seconds after too many failures |
+
+To disable secure boot (single-player/testing only), set `secure_boot_enabled = false` in `moomdeck/config.lua`.
 
 ## Recommended Setup (Cobblestone Generator Example)
 

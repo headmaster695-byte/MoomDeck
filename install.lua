@@ -13,6 +13,7 @@ local files = {
     "moomdeck/core/storage.lua",
     "moomdeck/core/events.lua",
     "moomdeck/core/scheduler.lua",
+    "moomdeck/core/secure_boot.lua",
     "moomdeck/services/rate_engine.lua",
     "moomdeck/services/peripheral_manager.lua",
     "moomdeck/adapters/base.lua",
